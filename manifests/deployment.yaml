@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: GaneSH-WORKFLOW
+  labels:
+    app: GaneSH-WORKFLOW
+    kubernetes.azure.com/generator: devhub
+  namespace: namespace-workflow-1721476103892
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: GaneSH-WORKFLOW
+  template:
+    metadata:
+      labels:
+        app: GaneSH-WORKFLOW
+    spec:
+      containers:
+        - name: GaneSH-WORKFLOW
+          image: acrworkflow1721476103892.azurecr.io/image-workflow-1721476103892:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
